@@ -1,0 +1,326 @@
+:root {
+  --bg: #0b0f19;
+  --card: rgba(255, 255, 255, 0.06);
+  --card2: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.12);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.65);
+  --brand: #7c3aed; /* violet */
+  --brand2: #22c55e; /* green */
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(
+      1200px 700px at 15% 10%,
+      rgba(124, 58, 237, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 80% 25%,
+      rgba(34, 197, 94, 0.18),
+      transparent 55%
+    ),
+    var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+}
+
+/* ✅ Container use more space (avoid blank feel) */
+.container {
+  width: min(1600px, 100%);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ✅ Header / Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 18px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--card2), var(--card));
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.hero p {
+  margin: 6px 0 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.badge {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ✅ Grid layout - map bigger + less empty */
+.grid {
+  display: grid;
+  grid-template-columns: 350px 1fr 1.6fr;
+  gap: 18px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--card2), var(--card));
+  border-radius: 18px;
+  padding: 14px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.row-between {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ✅ Form elements */
+label {
+  font-size: 12px;
+  color: var(--muted);
+  display: block;
+  margin: 6px 0 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.28);
+  color: var(--text);
+  outline: none;
+  font-size: 13px;
+}
+
+input:focus,
+select:focus {
+  border-color: rgba(124, 58, 237, 0.65);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  user-select: none;
+}
+
+.checkbox input {
+  width: 18px;
+  height: 18px;
+}
+
+/* ✅ Buttons */
+.btn {
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0px);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--brand), #4f46e5);
+  border: none;
+  color: white;
+}
+
+.btn-soft {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.btn-green {
+  background: linear-gradient(90deg, var(--brand2), #16a34a);
+  border: none;
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ✅ Range slider */
+.slider {
+  width: 100%;
+}
+
+/* ✅ Places list scroll based on screen height */
+.places {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 78vh; /* 🔥 responsive */
+  overflow: auto;
+  padding-right: 6px;
+}
+
+/* ✅ Better scrollbar */
+.places::-webkit-scrollbar {
+  width: 8px;
+}
+.places::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 999px;
+}
+.places::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+.places::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ✅ Place cards */
+.place-card {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 16px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.place-card:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  transform: translateY(-1px);
+}
+
+.place-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+}
+
+.place-name {
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.06);
+  gap: 6px;
+}
+
+/* ✅ Map container */
+.mapWrap {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  height: 78vh;
+  position: sticky;
+  top: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ✅ Empty state (for place list) */
+.empty {
+  margin-top: 30px;
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  text-align: center;
+}
+
+.empty-emoji {
+  font-size: 34px;
+}
+
+.empty-title {
+  margin: 10px 0 4px;
+}
+
+.empty-text {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 13px;
+}
